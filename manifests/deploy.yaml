@@ -29,10 +29,8 @@ spec:
     spec:
       containers:
       - name: loyalty-level
-#       Note: this manifests/deploy.yaml will be used when we want to deploy this directly using kubectl or a helm chart. 
-#             Microclimate uses the Charts folder so we can actually have both options
-        image: ibmstocktrader/loyalty-level:latest # Pull from docker hub by default
-#       image: registry.ng.bluemix.net/stock_trader/loyalty-level:latest # IBM Container Service
+        image: stocktraderdemo/loyalty-level:latest # Pull from docker hub by default
+        imagePullPolicy: Always
         env:
           - name: MQ_ID
             valueFrom:
@@ -82,7 +80,6 @@ spec:
         ports:
           - containerPort: 9080
           - containerPort: 9443
-        imagePullPolicy: Always
 ---
 #Deploy the service
 apiVersion: v1
